@@ -15,9 +15,19 @@ public class Utils {
 	public static void listFiles(String userDir) {
 
 		File f = new File(userDir);
+
+		// System.out.println("File Exists="+f.exists());
+
+		if (!f.exists()) {
+			f.mkdir();
+			System.out.println("Created root Directory:" + userDir);
+		}
+
 		File[] files = f.listFiles();
 
-		Arrays.sort(files, new FileNameComparator());
+		if (files.length > 1) {
+			Arrays.sort(files, new FileNameComparator());
+		}
 
 		for (File file : files) {
 
@@ -33,10 +43,18 @@ public class Utils {
 
 	public static void addFile(String userDir, String fileName) {
 		File f = new File(userDir + "/" + fileName);
+
+		if (f.exists()) {
+			System.out.println("\n" + fileName + " already exists\n");
+			return;
+		}
+
 		f.getParentFile().mkdirs();
+
 		try {
 			f.createNewFile();
 		} catch (IOException e) {
+			System.out.println("\nError while creating a new file \n");
 			e.printStackTrace();
 		}
 
@@ -47,7 +65,7 @@ public class Utils {
 		if (f.exists()) {
 			f.delete();
 		} else {
-			System.out.println("File not found ");
+			System.out.println("\n" + fileName + " File not found\n ");
 		}
 
 	}
@@ -62,14 +80,14 @@ public class Utils {
 		for (File file : files) {
 
 			if (file.getName().toString().equals(fileName)) {
-				System.out.println(file.getName() + " Found " + file.getAbsolutePath());
+				System.out.println("\n" + file.getAbsolutePath() + "\n");
 				fileExists = true;
 				break;
 			}
 		}
 
 		if (!fileExists) {
-			System.out.println(fileName + " does not exist");
+			System.out.println("\n" + fileName + " does not exist\n");
 		}
 
 	}

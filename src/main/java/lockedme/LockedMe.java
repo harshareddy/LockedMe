@@ -18,7 +18,7 @@ public class LockedMe {
 
 		do {
 			printMainContext();
-			System.out.print("Enter Option :");
+			System.out.print("\nEnter Option :");
 			input = scan.nextLine();
 			System.out.println();
 
@@ -33,7 +33,7 @@ public class LockedMe {
 				do {
 
 					printSubContext();
-					System.out.print("Enter Option :");
+					System.out.print("\nEnter Option :");
 					sub_context = scan.nextLine();
 
 					if (sub_context.equals("1")) {
@@ -53,30 +53,31 @@ public class LockedMe {
 						break;
 					} else {
 
-						System.out.println("Invalid Input");
+						System.out.println("\nInvalid Input\n");
 					}
 
 				} while (!sub_context.equals("4"));
 
 			} else if (input.equals("3")) {
 
-				System.out.println("Thanks for Using Lockedme Application!!!Bye");
-				return;
+				//System.out.println("Thanks for Using Lockedme Application!!!Bye");
+				break;
 			} else {
-				System.out.println("Invalid Input");
+				System.out.println("\nInvalid Input\n");
 			}
 
 		} while (!input.equals("3"));
 
+		scan.close();
+
 	}
 
 	private static void printWelcomeScreen() {
-		System.out.println("####################################################");
-		System.out.println();
+
+		System.out.println("\n\n####################################################\n");
 		System.out.println("\tWelcome to " + APPLICATION_NAME + " application");
 		System.out.println("\tDeveloped By: " + DEVELOPER_NAME);
-		System.out.println();
-		System.out.println("####################################################");
+		System.out.println("\n####################################################\n");
 
 	}
 
@@ -87,7 +88,7 @@ public class LockedMe {
 		System.out.println("1 => Add File");
 		System.out.println("2 => Delete File");
 		System.out.println("3 => Search File");
-		System.out.println("4 => Back to the main context");
+		System.out.println("4 => Back to the MAIN MENU");
 
 	}
 
